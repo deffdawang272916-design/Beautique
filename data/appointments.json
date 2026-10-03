@@ -1,0 +1,36 @@
+[
+  {
+    "clientName": "Dr. Beatrice Alonzo",
+    "mobileNumber": "+639185557777",
+    "rawMobileInput": "0918 555 7777",
+    "email": null,
+    "serviceId": "co2-laser",
+    "serviceName": "Fractional CO2 Laser",
+    "preferredDate": "2026-10-18",
+    "preferredTime": "02:00 PM",
+    "skinConcerns": "Acne scars",
+    "status": "pending_confirmation",
+    "confirmedDate": null,
+    "confirmedTime": null,
+    "proposedDate": null,
+    "proposedTime": null,
+    "staffNotes": null,
+    "smsStatus": "none",
+    "clinicLocation": "Beautique Aesthetics — Santa Rosa, Nueva Ecija, Philippines",
+    "id": "bc7d6feb-7592-488a-a3e4-0096ee3a8d91",
+    "referenceCode": "BT-APT-3923",
+    "statusToken": "560cb6a46c12216cc2cd06d1cad0ea8d",
+    "createdAt": "2026-10-03T13:25:54.790Z",
+    "updatedAt": "2026-10-03T13:25:54.790Z",
+    "statusHistory": [
+      {
+        "fromStatus": null,
+        "toStatus": "pending_confirmation",
+        "changedAt": "2026-10-03T13:25:54.790Z",
+        "changedBy": "customer",
+        "reason": "Appointment request submitted by customer."
+      }
+    ],
+    "smsEvents": []
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "name": "Beautech Aesthetic Clinic Santa Rosa",
+  "description": "Modern premium aesthetic clinic and training academy in Santa Rosa, Nueva Ecija. Offering medical-grade facials, skin rejuvenation, beauty products, and professional aesthetic courses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

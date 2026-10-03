@@ -1,0 +1,12 @@
+[
+  {
+    "timestamp": "2026-10-03T13:06:33.692Z",
+    "type": "appointment_request",
+    "ref": "BT-APT-8560",
+    "client": "Juan Dela Cruz",
+    "phone": "09171234567",
+    "service": "HIFU Lifting & Contouring",
+    "schedule": "2026-10-15 (Morning (10:00 AM – 12:00 PM))",
+    "notes": "Jawline lifting consultation"
+  }
+]
