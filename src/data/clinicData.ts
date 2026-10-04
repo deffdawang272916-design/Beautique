@@ -156,7 +156,7 @@ export const PROMOTIONS: Promotion[] = [
       'Promotes a refreshed, healthy-looking appearance from within',
     ],
     statusNote: 'Recent promotion — confirm availability',
-    image: '/Gluta Drip + Vitamin.png',
+    image: '/gluta-drip-vitc.png',
     popular: true,
   },
   {
@@ -384,7 +384,7 @@ export const PROMOTIONS: Promotion[] = [
       'Combines HIFU lifting with JawTox for enhanced facial contouring',
     ],
     statusNote: 'Recent promotion — confirm availability',
-    image: '/HIFU + Jawtox.png',
+    image: '/hifu-jawtox.png',
     popular: true,
   },
   {
@@ -649,7 +649,7 @@ export const BER_MONTHS_PROMOTIONS: BerMonthsPromoItem[] = [
       'Supports a slimmer, more defined-looking jawline',
       'Combines HIFU lifting with JawTox for enhanced facial contouring',
     ],
-    image: '/HIFU + Jawtox.png',
+    image: '/hifu-jawtox.png',
   },
   {
     id: 'promo-gluta-drip',
@@ -667,7 +667,7 @@ export const BER_MONTHS_PROMOTIONS: BerMonthsPromoItem[] = [
       'Helps complement your skin’s natural glow with Vitamin C',
       'Promotes a refreshed, healthy-looking appearance from within',
     ],
-    image: '/Gluta Drip + Vitamin.png',
+    image: '/gluta-drip-vitc.png',
   },
   {
     id: 'promo-slimming-shots',
@@ -1041,7 +1041,7 @@ export const TREATMENTS: Treatment[] = [
     popular: true,
     isPromotion: true,
     statusNote: 'BER Months Promo — Combo Treatment (₱4,999)',
-    image: '/HIFU + Jawtox.png',
+    image: '/hifu-jawtox.png',
   },
 
   // 13. Gluta Drip with Vitamin C Treatment (BER Months Promo)
@@ -1073,7 +1073,7 @@ export const TREATMENTS: Treatment[] = [
     ],
     isPromotion: true,
     statusNote: 'BER Months Promo — 10 Sessions (₱8,000)',
-    image: '/Gluta Drip + Vitamin.png',
+    image: '/gluta-drip-vitc.png',
   },
 
   // 14. Slimming Shots (BER Months Promo)

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDFBF7"/>
+      <stop offset="50%" stop-color="#F7F3EB"/>
+      <stop offset="100%" stop-color="#EFE9DD"/>
+    </linearGradient>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="35%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#92400E"/>
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="amberGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#1C1917" flood-opacity="0.10"/>
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Clean Studio Background -->
+  <rect width="800" height="600" fill="url(#bgGrad)" rx="24"/>
+
+  <!-- Subtle Studio Floor Reflection Oval -->
+  <ellipse cx="400" cy="520" rx="260" ry="24" fill="#000000" fill-opacity="0.06"/>
+  <ellipse cx="400" cy="516" rx="190" ry="14" fill="#000000" fill-opacity="0.08"/>
+
+  <!-- Machine Hardware Art -->
+  <g filter="url(#dropShadow)">
+    
+  <!-- Heavy Clinical Base -->
+  <rect x="330" y="480" width="140" height="25" rx="10" fill="url(#metalGrad)" stroke="#64748B" stroke-width="2"/>
+  <circle cx="355" cy="510" r="8" fill="#334155"/>
+  <circle cx="445" cy="510" r="8" fill="#334155"/>
+  <!-- Articulated Chrome Stand -->
+  <rect x="392" y="240" width="16" height="245" fill="url(#metalGrad)" stroke="#94A3B8" stroke-width="2"/>
+  <circle cx="400" cy="240" r="16" fill="url(#metalGrad)" stroke="#475569" stroke-width="3"/>
+  <rect x="375" y="235" width="50" height="10" rx="5" fill="#0284C7"/>
+  <!-- Large Arched Canopy Phototherapy Head -->
+  <path d="M240 230 C240 100 560 100 560 230 C530 250 490 250 400 250 C310 250 270 250 240 230 Z" fill="url(#bodyGrad)" stroke="#CBD5E1" stroke-width="4"/>
+  <path d="M260 215 C260 120 540 120 540 215" fill="none" stroke="#0284C7" stroke-width="6"/>
+  <!-- Array of Multi-Color LED Diodes Glowing -->
+  <g fill="#EF4444" filter="url(#softGlow)">
+    <circle cx="300" cy="180" r="7"/><circle cx="340" cy="150" r="7"/><circle cx="380" cy="135" r="7"/>
+    <circle cx="420" cy="135" r="7"/><circle cx="460" cy="150" r="7"/><circle cx="500" cy="180" r="7"/>
+  </g>
+  <g fill="#3B82F6" filter="url(#softGlow)">
+    <circle cx="320" cy="195" r="6"/><circle cx="360" cy="170" r="6"/><circle cx="400" cy="160" r="6"/>
+    <circle cx="440" cy="170" r="6"/><circle cx="480" cy="195" r="6"/>
+  </g>
+  <g fill="#EAB308" filter="url(#softGlow)">
+    <circle cx="340" cy="210" r="5"/><circle cx="380" cy="195" r="5"/><circle cx="420" cy="195" r="5"/><circle cx="460" cy="210" r="5"/>
+  </g>
+
+  </g>
+
+  <!-- Clean Top-Right Badge -->
+  <g transform="translate(620, 36)">
+    <rect width="144" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.9" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="72" y="18" fill="#78350F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="0.5" text-anchor="middle">BEAUTECH AESTHETIC</text>
+  </g>
+
+  <!-- Clean Bottom Left Model Label -->
+  <g transform="translate(36, 546)">
+    <text x="0" y="0" fill="#1C1917" font-family="Georgia, serif" font-size="16" font-weight="600">Bio Light</text>
+    <text x="0" y="18" fill="#78716C" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="11" font-weight="500" letter-spacing="0.5">FACIAL &amp; SKIN CARE</text>
+  </g>
+</svg>

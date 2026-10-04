@@ -3,21 +3,13 @@ import {
   X, 
   Phone, 
   MessageCircle, 
-  ShieldCheck, 
   CheckCircle2, 
-  Info, 
-  Sparkles, 
-  Zap, 
-  Activity, 
-  Droplets, 
-  Syringe, 
-  Armchair, 
-  Layers,
-  ArrowRight,
-  HelpCircle
+  Sparkles,
+  Info
 } from 'lucide-react';
 import { MachineItem } from '../types';
 import { CLINIC_INFO } from '../data/clinicData';
+import { getSafeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface MachineDetailModalProps {
   machine: MachineItem | null;
@@ -43,29 +35,6 @@ export const MachineDetailModal: React.FC<MachineDetailModalProps> = ({
 
   if (!machine) return null;
 
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case 'laser':
-        return <Zap className="w-8 h-8 text-amber-700" />;
-      case 'hifu-rf':
-        return <Activity className="w-8 h-8 text-amber-700" />;
-      case 'facial':
-        return <Droplets className="w-8 h-8 text-amber-700" />;
-      case 'injection':
-        return <Syringe className="w-8 h-8 text-amber-700" />;
-      case 'equipment':
-        return <Armchair className="w-8 h-8 text-amber-700" />;
-      case 'supplies':
-        return <Layers className="w-8 h-8 text-amber-700" />;
-      default:
-        return <Sparkles className="w-8 h-8 text-amber-700" />;
-    }
-  };
-
-  const messengerInquiryUrl = `${CLINIC_INFO.contact.messengerUrl}?text=${encodeURIComponent(
-    `Hello Beautique Aesthetics, I am inquiring about the ${machine.name} regarding current pricing, availability, and demonstration details.`
-  )}`;
-
   return (
     <div 
       className="fixed inset-0 z-50 overflow-y-auto bg-stone-900/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
@@ -83,7 +52,7 @@ export const MachineDetailModal: React.FC<MachineDetailModalProps> = ({
               {machine.categoryLabel}
             </span>
             <span className="text-xs text-stone-500 hidden sm:inline">
-              · Beautique Aesthetics Machine Supply
+              · Beautech Aesthetic Equipment Catalog
             </span>
           </div>
           <button
@@ -98,101 +67,101 @@ export const MachineDetailModal: React.FC<MachineDetailModalProps> = ({
         {/* Scrollable Content Body */}
         <div className="p-5 sm:p-8 space-y-6 overflow-y-auto flex-1">
           
-          {/* Visual Presentation Box */}
-          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-gradient-to-br from-stone-100 via-stone-50 to-amber-50/40 rounded-xl border border-stone-200/90 flex flex-col items-center justify-center text-center p-6 overflow-hidden">
-            {machine.image ? (
-              <img
-                src={encodeURI(machine.image)}
-                alt={machine.name}
-                className="w-full h-full object-contain"
-                loading="lazy"
-              />
-            ) : (
-              <div className="flex flex-col items-center justify-center space-y-2.5">
-                <div className="w-16 h-16 rounded-2xl bg-white border border-stone-200 shadow-xs flex items-center justify-center">
-                  {getCategoryIcon(machine.category)}
-                </div>
-                <div className="space-y-1">
-                  <span className="text-xs uppercase tracking-widest font-semibold text-stone-700">
-                    Aesthetic Equipment
-                  </span>
-                  <p className="text-[11px] text-stone-500 max-w-xs">
-                    Official equipment photograph pending client catalogue upload. Inquire directly for verified unit visuals.
-                  </p>
-                </div>
-              </div>
-            )}
+          {/* Large Product Image */}
+          <div className="relative w-full aspect-[16/10] bg-[#FAF8F5] rounded-xl border border-stone-200/90 flex flex-col items-center justify-center text-center p-4 sm:p-6 overflow-hidden">
+            <img
+              src={getSafeImageUrl(machine.image)}
+              alt={machine.name}
+              className="w-full h-full object-contain"
+              loading="lazy"
+              onError={handleImageFallback}
+            />
 
             <div className="absolute top-3 right-3">
               <span className="bg-[#1C1917] text-white text-[10px] uppercase font-semibold px-2.5 py-1 rounded shadow-xs">
-                {machine.statusBadge}
+                {machine.statusBadge || 'Equipment Inquiry'}
               </span>
             </div>
           </div>
 
-          {/* Title & Core Overview */}
+          {/* Machine Name & Short Overview */}
           <div className="space-y-2">
             <h3 id="machine-title" className="font-serif text-2xl sm:text-3xl font-semibold text-stone-900 tracking-tight">
               {machine.name}
             </h3>
             <p className="text-sm text-stone-600 font-light leading-relaxed">
-              {machine.shortDescription}
+              {machine.overview || machine.shortDescription}
             </p>
           </div>
 
-          {/* Detailed Overview */}
-          {machine.overview && (
-            <div className="space-y-2 pt-1 border-t border-stone-100">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-700">
-                Equipment Overview
-              </h4>
-              <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
-                {machine.overview}
-              </p>
-            </div>
-          )}
-
-          {/* Key Features */}
-          {machine.keyFeatures && machine.keyFeatures.length > 0 && (
-            <div className="space-y-3 pt-1 border-t border-stone-100">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-stone-700 flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-amber-800" />
-                <span>Verified Configuration Highlights</span>
-              </h4>
-              <ul className="space-y-2 text-xs sm:text-sm text-stone-600">
-                {machine.keyFeatures.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-                    <span className="leading-snug">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Inclusions & Supply Terms */}
-          <div className="bg-[#FAF8F5] rounded-xl border border-stone-200 p-4 sm:p-5 space-y-2.5 text-xs text-stone-700">
-            <div className="flex items-start justify-between gap-2 pb-2 border-b border-stone-200/70">
-              <span className="text-stone-500 font-medium">Pricing:</span>
-              <span className="font-semibold text-amber-900 text-right">{machine.pricingDisplay}</span>
-            </div>
-            <div className="flex items-start justify-between gap-2 pb-2 border-b border-stone-200/70">
-              <span className="text-stone-500 font-medium">Availability:</span>
-              <span className="font-medium text-stone-800 text-right">{machine.availabilityNote}</span>
-            </div>
-            <div className="flex items-start justify-between gap-2">
-              <span className="text-stone-500 font-medium">Inclusions / Package:</span>
-              <span className="font-medium text-stone-700 text-right italic">
-                {machine.inclusionsNote || 'Contact clinic for current package inclusions and specifications.'}
-              </span>
-            </div>
+          {/* FUNCTIONS */}
+          <div className="space-y-3 pt-2 border-t border-stone-100">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
+              <Sparkles className="w-4 h-4 text-amber-800" />
+              <span>FUNCTIONS</span>
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-sm text-stone-600">
+              {machine.functions.map((func, idx) => (
+                <li key={idx} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                  <span className="leading-snug">{func}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Factual Disclaimer */}
+          {/* BENEFITS */}
+          <div className="space-y-3 pt-2 border-t border-stone-100">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-700" />
+              <span>BENEFITS</span>
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-sm text-stone-600">
+              {machine.benefits.map((benefit, idx) => (
+                <li key={idx} className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0 mt-2" />
+                  <span className="leading-snug">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Inclusions & Specifications Notice */}
+          {machine.inclusionsNote && (
+            <div className="bg-[#FAF8F5] rounded-xl border border-stone-200 p-4 text-xs text-stone-600">
+              <span className="font-semibold text-stone-900 block mb-1">Standard Inclusions:</span>
+              <p className="leading-relaxed">{machine.inclusionsNote}</p>
+            </div>
+          )}
+
+          {/* INQUIRY CTA BOX */}
+          <div className="bg-amber-50/60 rounded-xl border border-amber-200/80 p-5 space-y-3">
+            <div>
+              <h4 className="font-serif text-lg font-semibold text-stone-900">
+                Interested in this machine?
+              </h4>
+              <p className="text-xs sm:text-sm text-stone-600 mt-1 leading-relaxed">
+                Contact Beautech Aesthetic for product availability, pricing, and additional information.
+              </p>
+            </div>
+            
+            <button
+              onClick={() => {
+                onClose();
+                onOpenInquiry(machine);
+              }}
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#1C1917] hover:bg-stone-800 text-stone-50 font-medium text-sm py-3 px-5 rounded-md transition-colors cursor-pointer text-center shadow-xs"
+            >
+              <MessageCircle className="w-4 h-4 text-amber-300" />
+              <span>Inquire Now</span>
+            </button>
+          </div>
+
+          {/* Compliance & Consultation Notice */}
           <div className="p-3.5 bg-stone-50 border border-stone-200 rounded-lg text-xs text-stone-500 flex items-start gap-2.5">
             <Info className="w-4 h-4 text-amber-800 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              <strong>Inquiry Notice:</strong> Equipment pricing, warranty terms, lead times, demonstration arrangements, and handpiece inclusions are confirmed directly with Beautique Aesthetics. Device operation should comply with applicable local clinic regulatory standards.
+              <strong>Professional Notice:</strong> Device pricing, availability, and demonstration arrangements are subject to direct inquiry with Beautech Aesthetic. Aesthetic equipment operation should follow applicable professional standards.
             </p>
           </div>
 
@@ -203,7 +172,7 @@ export const MachineDetailModal: React.FC<MachineDetailModalProps> = ({
           <div>
             <span className="text-[11px] text-stone-500 block uppercase">Commercial Terms</span>
             <span className="font-serif text-sm sm:text-base font-semibold text-stone-900">
-              Inquire for Price & Demo
+              {machine.pricingDisplay || 'Inquire for Price'}
             </span>
           </div>
 
@@ -216,7 +185,7 @@ export const MachineDetailModal: React.FC<MachineDetailModalProps> = ({
               className="inline-flex items-center justify-center gap-2 bg-[#1C1917] hover:bg-stone-800 text-stone-50 font-medium text-xs sm:text-sm py-2.5 px-4 rounded-md transition-colors cursor-pointer text-center shadow-xs"
             >
               <MessageCircle className="w-4 h-4 text-amber-300" />
-              <span>Inquire About This Machine</span>
+              <span>Inquire Now</span>
             </button>
 
             <a

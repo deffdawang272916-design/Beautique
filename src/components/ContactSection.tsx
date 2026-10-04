@@ -171,24 +171,26 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               </div>
 
-              {/* CTAs */}
-              <div className="pt-2 flex flex-wrap items-center gap-3">
-                <button
-                  onClick={onBookAppointment}
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#1C1917] hover:bg-stone-800 text-stone-50 font-medium text-xs sm:text-sm py-3 px-5 rounded-md shadow-xs transition-colors"
-                >
-                  <Calendar className="w-4 h-4 text-amber-300" />
-                  <span>Request Santa Rosa Appointment</span>
-                </button>
+                {/* CTAs */}
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Bareface+Beautique+Wellness+and+Beauty+Clinic+Del+Pilar+Santa+Rosa+Nueva+Ecija"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 bg-white hover:bg-stone-100 text-stone-900 border border-stone-300 font-medium text-xs sm:text-sm py-3 px-4 rounded-md shadow-xs transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4 text-red-600" />
+                    <span>View on Google Maps</span>
+                  </a>
 
-                <button
-                  onClick={onExploreShop}
-                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-stone-50 text-stone-900 border border-stone-300 font-medium text-xs sm:text-sm py-3 px-4 rounded-md transition-colors"
-                >
-                  <ShoppingBag className="w-4 h-4 text-amber-800" />
-                  <span>Products</span>
-                </button>
-              </div>
+                  <button
+                    onClick={onBookAppointment}
+                    className="flex-1 inline-flex items-center justify-center gap-2 bg-[#1C1917] hover:bg-stone-800 text-stone-50 font-medium text-xs sm:text-sm py-3 px-5 rounded-md shadow-xs transition-colors"
+                  >
+                    <Calendar className="w-4 h-4 text-amber-300" />
+                    <span>Request Santa Rosa Appointment</span>
+                  </button>
+                </div>
 
             </div>
 
@@ -251,24 +253,36 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               </div>
 
-              {/* ZAFRA Online Presence */}
-              <div className="p-3.5 bg-white rounded-lg border border-stone-200 flex items-center justify-between gap-3 text-xs">
-                <div className="flex items-center gap-2.5">
-                  <Instagram className="w-4 h-4 text-pink-600" />
-                  <div>
-                    <span className="font-semibold text-stone-900 block">Associated Instagram:</span>
-                    <span className="text-stone-500">{ZAFRA_CLINIC_INFO.instagramHandle}</span>
+              {/* ZAFRA Online Presence & Map */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Zafra+Skin+Aesthetics+Center+E+Sarmiento+Bldg+M+De+Leon+St+Kapitan+Pepe+Cabanatuan+City+Nueva+Ecija"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white rounded-lg border border-stone-200 hover:border-amber-400 flex items-center gap-2.5 transition-colors group"
+                >
+                  <div className="p-2 rounded bg-amber-50 text-red-600 group-hover:bg-amber-100">
+                    <MapPin className="w-4 h-4" />
                   </div>
-                </div>
+                  <div className="min-w-0">
+                    <span className="text-[10px] text-stone-400 block uppercase font-semibold">Directions</span>
+                    <span className="font-semibold text-stone-800 truncate block">View on Google Maps</span>
+                  </div>
+                </a>
 
                 <a
                   href={ZAFRA_CLINIC_INFO.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-pink-700 hover:text-pink-900"
+                  className="p-3 bg-white rounded-lg border border-stone-200 hover:border-pink-300 flex items-center gap-2.5 transition-colors group"
                 >
-                  <span>View Instagram</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <div className="p-2 rounded bg-pink-50 text-pink-600 group-hover:bg-pink-100">
+                    <Instagram className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-[10px] text-stone-400 block uppercase font-semibold">Instagram</span>
+                    <span className="font-semibold text-stone-800 truncate block">{ZAFRA_CLINIC_INFO.instagramHandle}</span>
+                  </div>
                 </a>
               </div>
 

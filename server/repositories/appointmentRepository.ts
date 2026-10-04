@@ -8,7 +8,7 @@ import {
   APPOINTMENT_STATUSES,
   PublicAppointmentStatus,
 } from '../../src/types/appointment.ts';
-import { maskPhoneNumber } from '../utils/phone.ts';
+import { maskPhoneNumber, validatePhilippineMobileNumber } from '../utils/phone.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

@@ -29,6 +29,7 @@ import { AppointmentStatusModal } from './components/AppointmentStatusModal';
 import { StaffPortalModal } from './components/StaffPortalModal';
 import { TransformationsSection } from './components/TransformationsSection';
 import { AboutSection } from './components/AboutSection';
+import { LocationsSection } from './components/LocationsSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
@@ -214,6 +215,11 @@ export default function App() {
               }}
             />
 
+            {/* Two Clinic Locations Section */}
+            <LocationsSection
+              onBookAppointment={() => handleOpenBooking()}
+            />
+
             {/* Verified Testimonials */}
             <TestimonialsSection />
 
@@ -319,6 +325,9 @@ export default function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />
+            <LocationsSection
+              onBookAppointment={() => handleOpenBooking()}
+            />
             <TestimonialsSection />
             <ContactSection
               onBookAppointment={() => handleOpenBooking()}
@@ -330,6 +339,9 @@ export default function App() {
         {activeTab === 'faqs' && (
           <div className="pt-2">
             <FaqSection onOpenChat={() => setIsChatOpen(true)} />
+            <LocationsSection
+              onBookAppointment={() => handleOpenBooking()}
+            />
             <ContactSection
               onBookAppointment={() => handleOpenBooking()}
               onExploreShop={() => setActiveTab('products')}
@@ -339,6 +351,9 @@ export default function App() {
 
         {activeTab === 'contact' && (
           <div className="pt-2">
+            <LocationsSection
+              onBookAppointment={() => handleOpenBooking()}
+            />
             <ContactSection
               onBookAppointment={() => handleOpenBooking()}
               onExploreShop={() => {

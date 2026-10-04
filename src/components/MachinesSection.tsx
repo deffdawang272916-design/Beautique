@@ -1,23 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Zap, 
-  Activity, 
-  Droplets, 
-  Syringe, 
-  Armchair, 
-  Layers, 
   Search, 
   Sparkles, 
   MessageCircle, 
   Phone, 
   ArrowRight, 
-  Info,
-  ShieldCheck,
-  Eye
+  ShieldCheck, 
+  Eye,
+  CheckCircle2
 } from 'lucide-react';
 import { MACHINE_INVENTORY, MACHINE_CATEGORIES } from '../data/machineData';
 import { MachineItem, MachineCategory } from '../types';
 import { CLINIC_INFO } from '../data/clinicData';
+import { getSafeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface MachinesSectionProps {
   onSelectMachine: (machine: MachineItem) => void;
@@ -33,35 +28,19 @@ export const MachinesSection: React.FC<MachinesSectionProps> = ({
 
   const filteredMachines = useMemo(() => {
     return MACHINE_INVENTORY.filter((item) => {
-      const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+      const matchesCategory = selectedCategory === 'all' || item.category.includes(selectedCategory);
+      const query = searchQuery.toLowerCase().trim();
       const matchesSearch = 
-        !searchQuery.trim() ||
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.categoryLabel.toLowerCase().includes(searchQuery.toLowerCase());
+        !query ||
+        item.name.toLowerCase().includes(query) ||
+        item.shortDescription.toLowerCase().includes(query) ||
+        item.categoryLabel.toLowerCase().includes(query) ||
+        item.functions.some((f) => f.toLowerCase().includes(query)) ||
+        item.benefits.some((b) => b.toLowerCase().includes(query));
 
       return matchesCategory && matchesSearch;
     });
   }, [selectedCategory, searchQuery]);
-
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case 'laser':
-        return <Zap className="w-6 h-6 text-amber-800" />;
-      case 'hifu-rf':
-        return <Activity className="w-6 h-6 text-amber-800" />;
-      case 'facial':
-        return <Droplets className="w-6 h-6 text-amber-800" />;
-      case 'injection':
-        return <Syringe className="w-6 h-6 text-amber-800" />;
-      case 'equipment':
-        return <Armchair className="w-6 h-6 text-amber-800" />;
-      case 'supplies':
-        return <Layers className="w-6 h-6 text-amber-800" />;
-      default:
-        return <Sparkles className="w-6 h-6 text-amber-800" />;
-    }
-  };
 
   return (
     <section id="machines-section" className="py-16 sm:py-24 bg-[#FAF8F5] border-b border-stone-200">
@@ -73,10 +52,10 @@ export const MachinesSection: React.FC<MachinesSectionProps> = ({
             AESTHETIC MACHINES & EQUIPMENT
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-stone-900 tracking-tight text-balance">
-            Professional Aesthetic Systems & Clinic Supply
+            Professional Aesthetic Machines Catalog
           </h2>
           <p className="text-sm sm:text-base text-stone-600 font-light max-w-2xl mx-auto leading-relaxed">
-            Explore professional aesthetic machines, facial systems, clinic equipment and supplies available for inquiry. Contact Beautique Aesthetics directly for current availability, unit specifications, demonstrations, and pricing.
+            Explore Beautech Aesthetic's current selection of professional aesthetic machines and treatment workstations. Contact us directly for product availability, pricing, and demonstration details.
           </p>
         </div>
 
@@ -84,7 +63,7 @@ export const MachinesSection: React.FC<MachinesSectionProps> = ({
         <div className="mb-10 space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             
-            {/* Category Segmented Control with Horizontal Scroll on Mobile */}
+            {/* Category Segmented Control */}
             <div className="flex items-center justify-start gap-1.5 p-1 bg-stone-200/70 rounded-lg overflow-x-auto w-full lg:w-auto scrollbar-none px-2 sm:px-1">
               {MACHINE_CATEGORIES.map((cat) => (
                 <button
@@ -108,7 +87,7 @@ export const MachinesSection: React.FC<MachinesSectionProps> = ({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search machines, lasers, HIFU, beds..."
+                placeholder="Search machines, lasers, HIFU..."
                 className="w-full pl-9 pr-9 py-2.5 sm:py-2 bg-white border border-stone-300 rounded-md text-base sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-700 focus:border-amber-700"
               />
               {searchQuery && (
@@ -127,7 +106,7 @@ export const MachinesSection: React.FC<MachinesSectionProps> = ({
           {/* Results Count Metadata */}
           <div className="flex items-center justify-between text-xs text-stone-500 pt-1">
             <span>
-              Showing <strong>{filteredMachines.length}</strong> of {MACHINE_INVENTORY.length} aesthetic equipment items
+              Showing <strong>{filteredMachines.length}</strong> of {MACHINE_INVENTORY.length} machines
             </span>
             {selectedCategory !== 'all' && (
               <button
@@ -135,9 +114,9 @@ export const MachinesSection: React.FC<MachinesSectionProps> = ({
                   setSelectedCategory('all');
                   setSearchQuery('');
                 }}
-                className="text-amber-800 hover:text-amber-950 font-medium underline"
+                className="text-amber-800 hover:text-amber-950 font-medium underline cursor-pointer"
               >
-                Reset to all equipment
+                Reset to all machines
               </button>
             )}
           </div>
@@ -148,115 +127,98 @@ export const MachinesSection: React.FC<MachinesSectionProps> = ({
           <div className="text-center py-16 bg-white rounded-xl border border-stone-200 p-8 space-y-3">
             <Sparkles className="w-8 h-8 text-amber-700 mx-auto" />
             <h3 className="font-serif text-xl font-semibold text-stone-900">
-              No matching equipment found
+              No matching machines found
             </h3>
             <p className="text-xs sm:text-sm text-stone-500 max-w-sm mx-auto">
-              We couldn't find any machines matching your filter. Try adjusting your search query or selecting "All Equipment".
+              We couldn't find any machines matching your filter. Try adjusting your search query or selecting "All Machines".
             </p>
             <button
               onClick={() => {
                 setSelectedCategory('all');
                 setSearchQuery('');
               }}
-              className="mt-2 px-4 py-2 text-xs font-medium bg-[#1C1917] text-white rounded-md hover:bg-stone-800"
+              className="mt-2 px-4 py-2 text-xs font-medium bg-[#1C1917] text-white rounded-md hover:bg-stone-800 cursor-pointer"
             >
-              View All Equipment
+              View All Machines
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             {filteredMachines.map((machine) => (
               <article
                 key={machine.id}
-                className="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Visual Header / Tasteful Silhouette Placeholder */}
-                  <div className="relative aspect-[16/10] w-full bg-gradient-to-br from-stone-100 via-stone-50 to-amber-50/30 overflow-hidden border-b border-stone-100 flex items-center justify-center p-4">
-                    {machine.image ? (
-                      <img
-                        src={encodeURI(machine.image)}
-                        alt={machine.name}
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center justify-center text-center space-y-1.5 p-3">
-                        <div className="w-12 h-12 rounded-xl bg-white border border-stone-200 shadow-2xs flex items-center justify-center group-hover:border-amber-300 transition-colors">
-                          {getCategoryIcon(machine.category)}
-                        </div>
-                        <span className="text-[10px] tracking-wider uppercase font-semibold text-stone-600">
-                          {machine.categoryLabel}
-                        </span>
-                      </div>
-                    )}
+                  {/* Clean Machine Image Presentation */}
+                  <div className="relative aspect-[4/3] w-full bg-[#FBF9F6] overflow-hidden border-b border-stone-100 flex items-center justify-center p-3">
+                    <img
+                      src={getSafeImageUrl(machine.image)}
+                      alt={machine.name}
+                      className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-300"
+                      loading="lazy"
+                      onError={handleImageFallback}
+                    />
 
-                    {/* Unboxed status badge */}
-                    <div className="absolute top-2.5 right-2.5">
-                      <span className="bg-stone-900/90 text-white text-[9px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded shadow-2xs">
+                    {/* Status Badge */}
+                    <div className="absolute top-3 right-3">
+                      <span className="bg-stone-900/90 text-white text-[9px] uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded shadow-2xs">
                         {machine.statusBadge}
                       </span>
                     </div>
                   </div>
 
                   {/* Card Content */}
-                  <div className="p-4 sm:p-5 space-y-3">
+                  <div className="p-5 sm:p-6 space-y-3.5">
                     <div>
                       <span className="text-[10px] uppercase tracking-wider font-semibold text-amber-800 block">
                         {machine.categoryLabel}
                       </span>
-                      <h3 className="font-serif text-lg sm:text-xl font-semibold text-stone-900 mt-0.5 group-hover:text-amber-900 transition-colors line-clamp-1">
+                      <h3 className="font-serif text-xl sm:text-2xl font-semibold text-stone-900 mt-1 group-hover:text-amber-900 transition-colors">
                         {machine.name}
                       </h3>
-                      <p className="text-xs text-stone-500 font-light mt-1 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-stone-600 font-light mt-1.5 line-clamp-2 leading-relaxed">
                         {machine.shortDescription}
                       </p>
                     </div>
 
-                    {/* Key Feature Bullets (Factual 1-2 points) */}
-                    {machine.keyFeatures && machine.keyFeatures.length > 0 && (
-                      <div className="pt-2 border-t border-stone-100 text-[11px] text-stone-600 space-y-1">
-                        <p className="line-clamp-1 flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-amber-700 shrink-0" />
-                          <span>{machine.keyFeatures[0]}</span>
-                        </p>
-                        {machine.keyFeatures[1] && (
-                          <p className="line-clamp-1 flex items-center gap-1.5 text-stone-500">
-                            <span className="w-1.5 h-1.5 rounded-full bg-stone-400 shrink-0" />
-                            <span>{machine.keyFeatures[1]}</span>
-                          </p>
-                        )}
-                      </div>
-                    )}
+                    {/* 3-4 Key Functions */}
+                    <div className="pt-3 border-t border-stone-100 space-y-1.5">
+                      <span className="text-[10px] uppercase tracking-wider font-semibold text-stone-700 block">
+                        Key Functions:
+                      </span>
+                      <ul className="space-y-1.5 text-xs text-stone-600">
+                        {machine.functions.slice(0, 3).map((func, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-700 shrink-0 mt-1.5" />
+                            <span className="line-clamp-1 leading-snug">{func}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
 
-                {/* Card Actions & Pricing */}
-                <div className="p-4 sm:p-5 pt-0">
-                  <div className="pt-3 border-t border-stone-100 flex items-center justify-between gap-2">
-                    <div>
-                      <span className="text-[9px] text-stone-400 uppercase block">Pricing</span>
-                      <span className="font-serif text-xs sm:text-sm font-semibold text-stone-900">
-                        {machine.pricingDisplay}
-                      </span>
-                    </div>
+                {/* Card Action Buttons */}
+                <div className="p-5 sm:p-6 pt-0">
+                  <div className="pt-3 border-t border-stone-100 grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => onSelectMachine(machine)}
+                      className="inline-flex items-center justify-center gap-1.5 bg-white hover:bg-stone-100 text-stone-900 border border-stone-300 font-medium text-xs py-2.5 px-3 rounded-md transition-colors cursor-pointer text-center"
+                      title={`View details for ${machine.name}`}
+                    >
+                      <Eye className="w-3.5 h-3.5 text-stone-600" />
+                      <span>View Machine</span>
+                    </button>
 
-                    <div className="flex items-center gap-1.5">
-                      <button
-                        onClick={() => onSelectMachine(machine)}
-                        className="text-xs text-stone-600 hover:text-stone-950 font-medium py-1.5 px-2.5 rounded hover:bg-stone-100 transition-colors cursor-pointer"
-                        title={`View details for ${machine.name}`}
-                      >
-                        Details
-                      </button>
-                      <button
-                        onClick={() => onOpenInquiry(machine)}
-                        className="inline-flex items-center gap-1.5 bg-[#1C1917] hover:bg-stone-800 text-stone-50 text-xs font-medium py-2 px-3 rounded-md transition-colors shadow-2xs cursor-pointer"
-                      >
-                        <span>Inquire</span>
-                        <ArrowRight className="w-3 h-3 text-amber-300" />
-                      </button>
-                    </div>
+                    <button
+                      onClick={() => onOpenInquiry(machine)}
+                      className="inline-flex items-center justify-center gap-1.5 bg-[#1C1917] hover:bg-stone-800 text-white font-medium text-xs py-2.5 px-3 rounded-md transition-colors cursor-pointer text-center shadow-xs"
+                      title={`Inquire about ${machine.name}`}
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 text-amber-300" />
+                      <span>Inquire Now</span>
+                    </button>
                   </div>
                 </div>
 
@@ -264,42 +226,6 @@ export const MachinesSection: React.FC<MachinesSectionProps> = ({
             ))}
           </div>
         )}
-
-        {/* Factual Supply Guidance & Consultation Banner */}
-        <div className="mt-14 p-6 sm:p-8 bg-white rounded-2xl border border-stone-200 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="space-y-1.5 max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-800 uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Aesthetic Machine & Supply Inquiries</span>
-            </div>
-            <h4 className="font-serif text-xl sm:text-2xl font-semibold text-stone-900">
-              Need Equipment Guidance or Custom Clinic Quotes?
-            </h4>
-            <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
-              Whether establishing a new treatment room, upgrading your aesthetic console, or sourcing replacement handpieces and supplies, contact Beautique Aesthetics to verify current availability, technical demonstrations, and pricing.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row md:flex-col gap-2.5 shrink-0 w-full sm:w-auto">
-            <a
-              href={CLINIC_INFO.contact.messengerUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#0084FF] hover:bg-blue-600 text-white font-medium text-xs sm:text-sm py-2.5 px-5 rounded-md transition-colors shadow-xs"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>Inquire on Facebook Messenger</span>
-            </a>
-
-            <a
-              href="tel:09627400487"
-              className="inline-flex items-center justify-center gap-2 bg-stone-100 hover:bg-stone-200 text-stone-800 font-medium text-xs sm:text-sm py-2.5 px-5 rounded-md transition-colors border border-stone-200"
-            >
-              <Phone className="w-3.5 h-3.5 text-amber-800" />
-              <span>Call 0962 740 0487</span>
-            </a>
-          </div>
-        </div>
 
       </div>
     </section>

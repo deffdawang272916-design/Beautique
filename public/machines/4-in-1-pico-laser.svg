@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <!-- Warm Studio Background Gradients -->
+    <radialGradient id="warmStudioBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#F7ECE1"/>
+      <stop offset="45%" stop-color="#EFE2D3"/>
+      <stop offset="80%" stop-color="#DFD0BF"/>
+      <stop offset="100%" stop-color="#CFC0AE"/>
+    </radialGradient>
+
+    <!-- Warm Glowing Studio Halo Arch -->
+    <radialGradient id="haloGlow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#FFFDF7" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#FDE68A" stop-opacity="0.45"/>
+      <stop offset="85%" stop-color="#F59E0B" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Studio Floor Reflection Gradients -->
+    <radialGradient id="floorGlow" cx="50%" cy="85%" r="45%">
+      <stop offset="0%" stop-color="#FDF8F0" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#EFE3D5" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#DFD0BF" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Machine Body Gradients -->
+    <linearGradient id="bodyWhite" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="25%" stop-color="#F8FAFC"/>
+      <stop offset="70%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+
+    <linearGradient id="darkMetal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2D3748"/>
+      <stop offset="40%" stop-color="#1A202C"/>
+      <stop offset="80%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </linearGradient>
+
+    <linearGradient id="cyanHose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67E8F9"/>
+      <stop offset="35%" stop-color="#22D3EE"/>
+      <stop offset="70%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#0891B2"/>
+    </linearGradient>
+
+    <linearGradient id="silverHose" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="30%" stop-color="#CBD5E1"/>
+      <stop offset="60%" stop-color="#FFFFFF"/>
+      <stop offset="85%" stop-color="#94A3B8"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+
+    <linearGradient id="blackHose" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="50%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <linearGradient id="touchScreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="30%" stop-color="#BAE6FD"/>
+      <stop offset="100%" stop-color="#7DD3FC"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="20" flood-color="#78350F" flood-opacity="0.16"/>
+    </filter>
+    <filter id="floorShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+    </filter>
+    <filter id="neonHalo" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18" result="glow" />
+      <feComposite in="SourceGraphic" in2="glow" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 1. Warm Studio Room Background -->
+  <rect width="1000" height="1000" fill="url(#warmStudioBg)"/>
+
+  <!-- 2. Warm Studio Floor Plane with Soft Horizontal Gradient Horizon -->
+  <path d="M0 600 L1000 600 L1000 1000 L0 1000 Z" fill="url(#floorGlow)"/>
+
+  <!-- 3. Glowing Studio Background Arch / Neon Halo Light Feature -->
+  <g filter="url(#neonHalo)">
+    <path d="M120 600 C120 180 880 180 880 600" fill="none" stroke="#FFF7ED" stroke-width="26" stroke-linecap="round"/>
+    <path d="M120 600 C120 180 880 180 880 600" fill="none" stroke="#FDE68A" stroke-width="14" stroke-linecap="round"/>
+    <path d="M120 600 C120 180 880 180 880 600" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <!-- Ambient Inner Glow within the Arch -->
+  <ellipse cx="500" cy="380" rx="380" ry="240" fill="url(#haloGlow)"/>
+
+  <!-- 4. Soft Cast Shadow Under Machine -->
+  <ellipse cx="500" cy="870" rx="200" ry="25" fill="#451A03" fill-opacity="0.25" filter="url(#floorShadow)"/>
+  <ellipse cx="500" cy="865" rx="140" ry="15" fill="#1C1917" fill-opacity="0.3" filter="url(#floorShadow)"/>
+
+  <!-- 5. Machine Main Structure (4 in 1 Pico Laser in Studio) -->
+  <g filter="url(#softShadow)">
+
+    <!-- Bottom Base Cart with Wheels -->
+    <!-- Base Platform Housing -->
+    <path d="M350 740 L650 740 L630 840 L370 840 Z" fill="url(#bodyWhite)" stroke="#CBD5E1" stroke-width="2"/>
+    
+    <!-- 4 Caster Wheels -->
+    <!-- Front Left Wheel -->
+    <g transform="translate(365, 845)">
+      <rect x="0" y="0" width="18" height="12" rx="4" fill="#64748B"/>
+      <circle cx="9" cy="24" r="14" fill="#0F172A"/>
+      <circle cx="9" cy="24" r="10" fill="#475569"/>
+      <circle cx="9" cy="24" r="4" fill="#CBD5E1"/>
+    </g>
+    <!-- Front Right Wheel -->
+    <g transform="translate(580, 845)">
+      <rect x="0" y="0" width="18" height="12" rx="4" fill="#64748B"/>
+      <circle cx="9" cy="24" r="14" fill="#0F172A"/>
+      <circle cx="9" cy="24" r="10" fill="#475569"/>
+      <circle cx="9" cy="24" r="4" fill="#CBD5E1"/>
+    </g>
+
+    <!-- Lower Black Inset Body Panel -->
+    <path d="M375 620 Q500 645 625 620 L620 770 L380 770 Z" fill="url(#darkMetal)"/>
+
+    <!-- Main White Machine Tower Chassis -->
+    <path d="M360 250 L640 250 Q655 480 635 770 L365 770 Q345 480 360 250 Z" fill="url(#bodyWhite)" stroke="#CBD5E1" stroke-width="2"/>
+
+    <!-- Black Curved Side Grip Handles -->
+    <!-- Left Handle -->
+    <path d="M378 305 C360 350 360 440 378 485 L415 485 C400 440 400 350 415 305 Z" fill="url(#darkMetal)"/>
+    <!-- Right Handle -->
+    <path d="M622 305 C640 350 640 440 622 485 L585 485 C600 440 600 350 585 305 Z" fill="url(#darkMetal)"/>
+
+    <!-- Top Angled Bezel with Touchscreen -->
+    <path d="M380 160 L620 160 L640 290 L360 290 Z" fill="url(#darkMetal)" rx="18"/>
+    
+    <!-- LCD Screen Bezel Frame -->
+    <rect x="400" y="175" width="200" height="95" rx="10" fill="#0F172A" stroke="#475569" stroke-width="2"/>
+    
+    <!-- Color Touchscreen UI with Interface Elements -->
+    <rect x="408" y="182" width="184" height="81" rx="6" fill="url(#touchScreen)"/>
+    <!-- UI Header &amp; Avatar Icons -->
+    <rect x="414" y="188" width="40" height="28" rx="4" fill="#FFFFFF" fill-opacity="0.85"/>
+    <ellipse cx="434" cy="200" rx="8" ry="10" fill="#0284C7"/>
+    <rect x="460" y="188" width="40" height="28" rx="4" fill="#FFFFFF" fill-opacity="0.85"/>
+    <ellipse cx="480" cy="200" rx="8" ry="10" fill="#0284C7"/>
+    <rect x="506" y="188" width="40" height="28" rx="4" fill="#FFFFFF" fill-opacity="0.85"/>
+    <ellipse cx="526" cy="200" rx="8" ry="10" fill="#0284C7"/>
+    <rect x="552" y="188" width="34" height="28" rx="4" fill="#FFFFFF" fill-opacity="0.85"/>
+    <!-- UI Grid Parameter Bars -->
+    <rect x="420" y="226" width="160" height="14" rx="3" fill="#0369A1" fill-opacity="0.3"/>
+    <text x="500" y="237" fill="#0369A1" font-family="-apple-system, sans-serif" font-size="9" font-weight="bold" text-anchor="middle">4-IN-1 PICO SYSTEM</text>
+    <text x="500" y="254" fill="#0C4A6E" font-family="-apple-system, sans-serif" font-size="8" font-weight="600" text-anchor="middle">READY · 1064 / 532 / 755 / 1320nm</text>
+
+    <!-- Center Control Apertures &amp; Indicator Dials -->
+    <circle cx="500" cy="320" r="10" fill="#CBD5E1" stroke="#64748B" stroke-width="2"/>
+    <circle cx="500" cy="320" r="6" fill="#1E293B"/>
+    <circle cx="500" cy="355" r="8" fill="#CBD5E1" stroke="#64748B" stroke-width="1.5"/>
+    <circle cx="500" cy="385" r="12" fill="#334155" stroke="#64748B" stroke-width="2"/>
+    <circle cx="500" cy="385" r="4" fill="#E2E8F0"/>
+
+    <!-- 3 Front Connector Ports Block -->
+    <rect x="430" y="445" width="140" height="42" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="2"/>
+    <rect x="438" y="452" width="36" height="28" rx="5" fill="#CBD5E1" stroke="#64748B" stroke-width="1.5"/>
+    <rect x="482" y="452" width="36" height="28" rx="5" fill="#CBD5E1" stroke="#64748B" stroke-width="1.5"/>
+    <rect x="526" y="452" width="36" height="28" rx="5" fill="#CBD5E1" stroke="#64748B" stroke-width="1.5"/>
+
+    <!-- Left Handpiece (White / Cyan with Amber Tip) resting on holster -->
+    <g transform="translate(330, 105)">
+      <!-- Holster Bracket -->
+      <rect x="18" y="90" width="16" height="60" rx="4" fill="#CBD5E1"/>
+      <!-- Handpiece Shell -->
+      <path d="M8 10 C8 0 42 0 42 10 L44 140 C44 150 6 150 6 140 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+      <!-- Amber Laser Aperture Cap Tip -->
+      <rect x="14" y="5" width="22" height="12" rx="4" fill="#F59E0B" stroke="#D97706" stroke-width="1"/>
+      <!-- Digital Handpiece Window -->
+      <rect x="12" y="35" width="26" height="50" rx="4" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+      <line x1="25" y1="45" x2="25" y2="75" stroke="#0284C7" stroke-width="2"/>
+    </g>
+
+    <!-- Left Cyan Wrapped Spiral Hose curving down and reconnecting -->
+    <path d="M355 270 C310 380 310 650 365 770 C410 820 460 620 455 480" fill="none" stroke="url(#cyanHose)" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M355 270 C310 380 310 650 365 770 C410 820 460 620 455 480" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-dasharray="8 14" stroke-linecap="round" opacity="0.65"/>
+
+    <!-- Middle Silver Corrugated Cable -->
+    <path d="M500 480 C500 580 430 730 400 760" fill="none" stroke="url(#silverHose)" stroke-width="22" stroke-linecap="round"/>
+    <path d="M500 480 C500 580 430 730 400 760" fill="none" stroke="#334155" stroke-width="3" stroke-dasharray="4 6" opacity="0.5"/>
+
+    <!-- Right Black Laser Handpiece &amp; Cable -->
+    <!-- Right Vertical Handpiece -->
+    <g transform="translate(615, 95)">
+      <rect x="0" y="85" width="14" height="60" rx="4" fill="#64748B"/>
+      <!-- Matte Black Pistol Body -->
+      <path d="M5 0 L30 0 L35 170 L0 170 Z" fill="url(#darkMetal)" rx="8"/>
+      <rect x="6" y="20" width="22" height="40" rx="4" fill="#334155"/>
+      <circle cx="17" cy="40" r="5" fill="#EF4444"/>
+    </g>
+
+    <!-- Right Textured Black Spiral Cable -->
+    <path d="M545 480 C550 560 635 680 635 730 L630 265" fill="none" stroke="url(#blackHose)" stroke-width="28" stroke-linecap="round"/>
+    <path d="M545 480 C550 560 635 680 635 730 L630 265" fill="none" stroke="#4B5563" stroke-width="5" stroke-dasharray="6 10" opacity="0.7"/>
+
+  </g>
+
+  <!-- Clean Top Right Brand Emblem -->
+  <g transform="translate(760, 48)">
+    <rect width="180" height="34" rx="17" fill="#FFFFFF" fill-opacity="0.9" stroke="#E2E8F0" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="90" y="22" fill="#78350F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="0.8" text-anchor="middle">BEAUTECH AESTHETIC</text>
+  </g>
+
+  <!-- Clean Bottom Left Machine Name Overlay -->
+  <g transform="translate(48, 935)">
+    <text x="0" y="0" fill="#1C1917" font-family="Georgia, serif" font-size="20" font-weight="600">4 in 1 Pico Laser</text>
+    <text x="0" y="20" fill="#78716C" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="12" font-weight="500" letter-spacing="0.5">LASER &amp; SKIN TECHNOLOGY · CLINICAL PHOTO</text>
+  </g>
+</svg>

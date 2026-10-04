@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Search, Calendar, Sparkles, Check, ArrowRight, Tag, Phone } from 'lucide-react';
 import { TREATMENTS, CLINIC_INFO } from '../data/clinicData';
 import { Treatment } from '../types';
+import { getSafeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface TreatmentsSectionProps {
   onBookAppointment: (treatmentId?: string) => void;
@@ -173,10 +174,11 @@ export const TreatmentsSection: React.FC<TreatmentsSectionProps> = ({
                   {/* Card Media Preview */}
                   <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-stone-100">
                     <img
-                      src={encodeURI(treatment.image)}
+                      src={getSafeImageUrl(treatment.image)}
                       alt={treatment.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
+                      onError={handleImageFallback}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-transparent to-transparent" />
                     

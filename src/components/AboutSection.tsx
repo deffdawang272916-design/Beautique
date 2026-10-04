@@ -1,7 +1,7 @@
 import React from 'react';
-import { Sparkles, MapPin, GraduationCap, Building2, Phone } from 'lucide-react';
-import { CLINIC_INFO } from '../data/clinicData';
-import aboutClinicImage from '../assets/images/regenerated_image_1791031267120.webp';
+import { Sparkles, MapPin, GraduationCap, Building2, ExternalLink, Navigation } from 'lucide-react';
+import { CLINIC_INFO, ZAFRA_CLINIC_INFO } from '../data/clinicData';
+import { getSafeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface AboutSectionProps {
   onBookAppointment: () => void;
@@ -12,6 +12,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   onBookAppointment,
   onExploreAcademy,
 }) => {
+  const santaRosaMapsUrl = 'https://www.google.com/maps/search/?api=1&query=Bareface+Beautique+Wellness+and+Beauty+Clinic+Del+Pilar+Santa+Rosa+Nueva+Ecija';
+
   return (
     <section id="about-section" className="py-16 sm:py-20 bg-[#FAF8F5] border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,18 +21,38 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         {/* Top Story Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Column: Visual Showcase */}
+          {/* Left Column: Real Storefront Visual Showcase */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="relative rounded-xl overflow-hidden shadow-xl border border-stone-300 aspect-[4/5] bg-stone-200">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-stone-300 aspect-[4/3] sm:aspect-[4/3] bg-stone-200 group">
               <img
-                src={aboutClinicImage}
-                alt="Beautique Aesthetics Santa Rosa suite"
-                className="w-full h-full object-cover"
+                src="/locations/santa-rosa-branch.svg"
+                alt="Bareface Beautique Wellness & Beauty Clinic storefront in Santa Rosa, Nueva Ecija"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                loading="lazy"
+                onError={handleImageFallback}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white text-xs">
-                <p className="font-semibold text-sm">Beautique Aesthetics — Santa Rosa, Nueva Ecija</p>
-                <p className="text-stone-300">Santa Rosa, Nueva Ecija, Philippines</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent pointer-events-none" />
+              
+              <div className="absolute top-3 left-3">
+                <span className="bg-[#1C1917]/90 backdrop-blur-xs text-white text-[11px] font-semibold px-2.5 py-1 rounded shadow-xs uppercase tracking-wider">
+                  Verified Storefront
+                </span>
+              </div>
+
+              <div className="absolute bottom-3 left-3 right-3 text-white text-xs flex items-center justify-between gap-2">
+                <div>
+                  <p className="font-semibold text-sm">Beautique Aesthetic Clinic – Santa Rosa</p>
+                  <p className="text-stone-300 text-[11px]">Santa Rosa, Nueva Ecija, Philippines</p>
+                </div>
+                <a
+                  href={santaRosaMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/90 hover:bg-white text-stone-900 px-2.5 py-1.5 rounded text-[11px] font-medium flex items-center gap-1 shrink-0 transition-colors shadow-xs"
+                >
+                  <Navigation className="w-3 h-3 text-red-600" />
+                  <span>Maps</span>
+                </a>
               </div>
             </div>
 

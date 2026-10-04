@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Calendar, Tag, Check, ArrowRight, Phone, Sparkles, AlertCircle } from 'lucide-react';
 import { PROMOTIONS, CLINIC_INFO, TREATMENTS } from '../data/clinicData';
 import { Promotion, Treatment } from '../types';
+import { getSafeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface PromotionsSectionProps {
   onBookAppointment: (treatmentId?: string) => void;
@@ -89,10 +90,11 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({
                 {/* Visual Image Preview */}
                 <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-stone-200">
                   <img
-                    src={encodeURI(promo.image)}
+                    src={getSafeImageUrl(promo.image)}
                     alt={promo.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    onError={handleImageFallback}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
 

@@ -44,6 +44,9 @@ export const MachineInquiryModal: React.FC<MachineInquiryModalProps> = ({
       setCopied(false);
       setFormattedMessage('');
       setDirectMessengerUrl('');
+      if (machine) {
+        setNotes(machine.inquiryMessage || `I'm interested in the ${machine.name} machine. Please send me its current price and availability.`);
+      }
     }
   }, [isOpen, machine]);
 

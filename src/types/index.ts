@@ -170,21 +170,26 @@ export interface AppointmentBooking {
   notes?: string;
 }
 
-export type MachineCategory = 'all' | 'laser' | 'hifu-rf' | 'facial' | 'injection' | 'equipment' | 'supplies';
+export type MachineCategory = 'all' | 'facial' | 'laser' | 'hifu-lifting' | 'body-contouring';
 
 export interface MachineItem {
   id: string;
+  slug: string;
   name: string;
-  category: 'laser' | 'hifu-rf' | 'facial' | 'injection' | 'equipment' | 'supplies';
+  category: MachineCategory[];
   categoryLabel: string;
+  image: string;
   shortDescription: string;
-  overview?: string;
-  keyFeatures?: string[];
-  inclusionsNote?: string;
-  pricingDisplay: string;
-  availabilityNote: string;
-  image?: string;
+  overview: string;
+  functions: string[];
+  benefits: string[];
+  featured?: boolean;
   statusBadge: string;
+  inquiryMessage: string;
+  pricingDisplay?: string;
+  availabilityNote?: string;
+  inclusionsNote?: string;
+  keyFeatures?: string[];
   clientConfirmationNote?: string;
 }
 

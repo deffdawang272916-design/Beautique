@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { Product } from '../types';
 import { CLINIC_INFO } from '../data/clinicData';
+import { getSafeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -57,9 +58,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         {/* Product Image Header */}
         <div className="relative aspect-[16/10] w-full bg-stone-100 overflow-hidden border-b border-stone-100">
           <img
-            src={encodeURI(product.image)}
+            src={getSafeImageUrl(product.image)}
             alt={`${product.name} packaging`}
             className="w-full h-full object-cover"
+            onError={handleImageFallback}
           />
           <div className="absolute top-4 left-4">
             <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-xs text-amber-900 border border-amber-200/80 text-xs font-semibold px-3 py-1 rounded-full shadow-2xs">

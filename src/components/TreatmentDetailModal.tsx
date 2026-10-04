@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { X, Calendar, CheckCircle2, AlertCircle, Sparkles, Tag } from 'lucide-react';
 import { Treatment } from '../types';
+import { getSafeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface TreatmentDetailModalProps {
   treatment: Treatment | null;
@@ -46,10 +47,11 @@ export const TreatmentDetailModal: React.FC<TreatmentDetailModalProps> = ({
         {/* Header Visual */}
         <div className="relative h-56 sm:h-64 w-full bg-stone-100 overflow-hidden">
           <img
-            src={encodeURI(treatment.image)}
+            src={getSafeImageUrl(treatment.image)}
             alt={treatment.name}
             className="w-full h-full object-cover object-center"
             loading="lazy"
+            onError={handleImageFallback}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
           

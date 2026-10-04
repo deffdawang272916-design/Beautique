@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { CLINIC_INFO, PRODUCTS } from '../data/clinicData';
 import { Product } from '../types';
+import { getSafeImageUrl, handleImageFallback } from '../utils/imageUtils';
 
 interface ProductsSectionProps {
   onSelectProduct?: (product: Product) => void;
@@ -63,10 +64,11 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
                 {/* Product Cover Image Container (Landscape / Horizontal, Maintains Aspect Ratio) */}
                 <div className="relative w-full aspect-[16/10] bg-stone-100 overflow-hidden border-b border-stone-100">
                   <img
-                    src={encodeURI(product.image)}
+                    src={getSafeImageUrl(product.image)}
                     alt={`${product.name} packaging and product presentation at Beautique Aesthetics`}
                     className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                     loading="lazy"
+                    onError={handleImageFallback}
                   />
                   
                   {/* Subtle Gradient & Status Label */}

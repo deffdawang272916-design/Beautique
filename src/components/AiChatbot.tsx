@@ -186,8 +186,28 @@ Please note these are two distinct physical clinic locations.`;
     }
 
     // Aesthetic Machines & Equipment Supply
-    if (q.includes('machine') || q.includes('equipment') || q.includes('diode 2') || q.includes('suprano') || q.includes('picodiode') || q.includes('dermashine') || q.includes('alice bubble') || q.includes('thermalift') || q.includes('steamer') || q.includes('bed') || q.includes('light') || q.includes('electrode') || q.includes('supply') || q.includes('exilift') || q.includes('ndyag') || q.includes('hydra top')) {
-      return `Beautique Aesthetics offers professional aesthetic machines and clinic supplies for inquiry, including diode lasers (Suprano Diode 2 Handles), picosecond systems, HIFU (VMAX, 7D, standard), RF platforms (5D RF, Thermalift, Exilift), Dermashine PRO (automated mesotherapy delivery system), hydro-facial workstations, treatment beds, and clinic supplies. All equipment is inquiry-based; please contact us at 0962 740 0487 or 0930 344 1943 or message us on Facebook to confirm current pricing, availability, and demonstration arrangements.`;
+    if (q.includes('machine') || q.includes('equipment') || q.includes('hydrafacial') || q.includes('bio light') || q.includes('5d rf') || q.includes('omega light') || q.includes('cryolipolysis') || q.includes('7d hifu') || q.includes('co2 fractional') || q.includes('pico diode') || q.includes('power sculpt') || q.includes('thermagen') || q.includes('mpt hifu') || q.includes('exilift') || q.includes('classic hifu') || q.includes('pico laser') || q.includes('rf microneedling')) {
+      return `Beautech Aesthetic offers 18 verified professional aesthetic machines:
+1. 6 in 1 Hydrafacial with PDT
+2. Bio Light
+3. 5D RF
+4. 6 in 1 Hydrafacial
+5. PDT Omega Light
+6. Cryolipolysis 360
+7. HIFU Portable
+8. RF Microneedling
+9. 2 in 1 Pico Laser
+10. 7D HIFU
+11. CO2 Fractional Laser
+12. Pico Diode
+13. Power Sculpt
+14. Thermagen
+15. MPT HIFU
+16. Exilift
+17. Classic HIFU
+18. 4 in 1 Pico Laser
+
+All machines are available for clinic order and inquiry. Please contact Beautech Aesthetic at 0962 740 0487 or 0930 344 1943 or message us directly on Facebook to confirm current pricing, availability, and demonstration details!`;
     }
 
     // Brand name / historical naming inquiry
