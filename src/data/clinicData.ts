@@ -1393,6 +1393,87 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const TRAINING_COURSES: TrainingCourse[] = [
+  // 1. PINNED / LATEST / CANONICAL: Aesthetic Skills Training (Oct 20, 2026)
+  {
+    id: 'aesthetic-skills-training-oct-2026',
+    title: 'Aesthetic Skills Training',
+    subtitle: 'Level Up Your Aesthetic Skills · Comprehensive Hands-On Course',
+    organization: 'Beautique Aesthetic Training Center (BATC)',
+    description: 'Comprehensive aesthetic skills training course advertised for ₱4,999. Features intensive hands-on practical training covering scar management, melasma, exosomes, and specialty treatments at Santa Rosa, Nueva Ecija. Only 20 slots available. Registration deadline: October 12, 2026.',
+    topics: [
+      'Acne scar management',
+      'Melasma removal',
+      'Exosome training',
+      'Vampire facial training',
+      'Skin boosters',
+      'Collagen induction therapy',
+      'Hair regrowth treatment',
+      'Intensive underarm whitening treatment',
+    ],
+    priceFormatted: '₱4,999',
+    price: 4999,
+    date: 'October 20, 2026',
+    registrationDeadline: 'October 12, 2026',
+    slotsInfo: '20 Slots Available',
+    location: 'Santa Rosa, Nueva Ecija',
+    pricingNote: 'Comprehensive course for ₱4,999 with hands-on practice. Only 20 slots available. Register until October 12, 2026. Secure your spot today.',
+    badge: 'Latest Training',
+    pinned: true,
+    featured: true,
+    isLatest: true,
+    priority: 1,
+    highlights: [
+      'October 20, 2026',
+      'Santa Rosa, Nueva Ecija',
+      '₱4,999',
+      '20 Slots Available',
+      'Register Until October 12, 2026',
+    ],
+    statusNote: 'Current Announcement — Training on Oct 20, 2026 · Register until Oct 12, 2026 (₱4,999)',
+    image: '/aesthetic-skills-training-october-20-2026.jpg',
+    galleryImages: [
+      '/aesthetic-skills-training-october-20-2026.jpg',
+    ],
+  },
+
+  // 2. PINNED / FEATURED: Private VIP Training — Aesthetic Services Level III
+  {
+    id: 'private-vip-aesthetic-services-level-iii',
+    title: 'Private VIP Training — Aesthetic Services Level III',
+    subtitle: 'Private · Exclusive · Hands-On · Learn · Practice · Elevate',
+    organization: 'Beautique Aesthetic Training Center (BATC)',
+    description: 'Exclusive private VIP aesthetic training program covering advanced facial techniques, chemical peeling, light and heat therapies, consultation protocols, and rigorous clinical safety standards. Limited VIP slots available.',
+    topics: [
+      'Advanced Facial Treatment',
+      'Chemical Skin Peeling',
+      'Light Therapy',
+      'Heat Therapy',
+      'Client Consultation & Assessment',
+      'Client Safety, Contraindications & Treatment Requirements',
+      'Quality Standards & Safe Work Practices',
+      'Proper Preparation, Procedures & Aftercare',
+      'Hands-On Practical Training',
+    ],
+    priceFormatted: 'Message for Training Details',
+    pricingNote: 'Private VIP training — message or contact training center directly for details and registration.',
+    badge: 'Featured VIP',
+    pinned: true,
+    featured: true,
+    priority: 2,
+    highlights: [
+      'Private · Exclusive · Hands-On',
+      'Aesthetic Services Level III',
+      'Limited VIP Slots Available',
+      'Hands-On Practical Training',
+    ],
+    statusNote: 'Private VIP Training — Message Us Now for Training Details',
+    image: '/private-vip-aesthetic-services-level-iii.jpg',
+    galleryImages: [
+      '/private-vip-aesthetic-services-level-iii.jpg',
+    ],
+  },
+
+  // 3. Master Course in Aesthetics (Existing verified course)
   {
     id: 'master-course-aesthetics',
     title: 'Master Course in Aesthetics',

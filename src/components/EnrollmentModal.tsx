@@ -53,13 +53,13 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
               <span>{course.organization}</span>
             </div>
             <h3 className="font-serif text-lg sm:text-xl font-semibold text-stone-900 mt-0.5">
-              {isSuccess ? 'Training Inquiry Sent' : course.title}
+              {isSuccess ? 'Registration Request Sent' : 'Training Registration Request'}
             </h3>
           </div>
           <button
             onClick={onClose}
-            aria-label="Close training inquiry dialog"
-            className="p-2 sm:p-1.5 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-200 transition-colors min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 flex items-center justify-center"
+            aria-label="Close training registration dialog"
+            className="p-2 sm:p-1.5 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-200 transition-colors min-h-[44px] min-w-[44px] sm:min-h-0 sm:min-w-0 flex items-center justify-center cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -69,11 +69,19 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
         {!isSuccess ? (
           <form onSubmit={handleSubmit} className="p-4 sm:p-5 space-y-4 max-h-[75dvh] overflow-y-auto">
             {/* Course Summary */}
-            <div className="p-3 bg-stone-50 rounded-lg border border-stone-200 text-xs space-y-1">
-              <p className="font-semibold text-stone-900">{course.title} ({course.subtitle})</p>
-              <p className="text-stone-600">
-                Tuition, prerequisites, and upcoming batch dates will be confirmed by BATC training staff.
-              </p>
+            <div className="p-3 bg-stone-50 rounded-lg border border-stone-200 text-xs space-y-1.5">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="font-semibold text-stone-900 text-sm">{course.title}</p>
+                <span className="bg-amber-100 text-amber-900 px-2 py-0.5 rounded font-bold text-xs">{course.priceFormatted}</span>
+              </div>
+              <p className="text-stone-600">{course.subtitle}</p>
+              
+              <div className="flex flex-wrap items-center gap-1.5 pt-1 text-[11px] text-stone-700">
+                {course.date && <span className="bg-white px-2 py-0.5 rounded border border-stone-200">Date: <strong>{course.date}</strong></span>}
+                {course.registrationDeadline && <span className="bg-red-50 text-red-900 px-2 py-0.5 rounded border border-red-200">Register until: <strong>{course.registrationDeadline}</strong></span>}
+                {course.slotsInfo && <span className="bg-white px-2 py-0.5 rounded border border-stone-200">Capacity: <strong>{course.slotsInfo}</strong></span>}
+                {course.location && <span className="bg-white px-2 py-0.5 rounded border border-stone-200">Venue: <strong>{course.location}</strong></span>}
+              </div>
             </div>
 
             {/* Inputs */}
@@ -143,7 +151,7 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
               </label>
               <textarea
                 rows={2}
-                placeholder="e.g. Schedule inquiries, venue details, or group enrollment"
+                placeholder="e.g. Schedule inquiries, venue details, or group registration"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 className="w-full px-3 py-2.5 sm:py-2 bg-stone-50 border border-stone-300 rounded text-base sm:text-sm text-stone-900 focus:outline-none focus:ring-1 focus:ring-amber-700"
@@ -155,15 +163,15 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="w-full sm:w-auto px-4 py-2.5 sm:py-2 text-xs font-medium text-stone-600 hover:text-stone-900 text-center rounded hover:bg-stone-100 transition-colors"
+                className="w-full sm:w-auto px-4 py-2.5 sm:py-2 text-xs font-medium text-stone-600 hover:text-stone-900 text-center rounded hover:bg-stone-100 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="w-full sm:w-auto bg-[#1C1917] hover:bg-stone-800 text-stone-50 text-xs sm:text-sm font-medium py-3 sm:py-2.5 px-6 rounded-md shadow-xs transition-colors text-center"
+                className="w-full sm:w-auto bg-[#1C1917] hover:bg-stone-800 text-stone-50 text-xs sm:text-sm font-medium py-3 sm:py-2.5 px-6 rounded-md shadow-xs transition-colors text-center cursor-pointer"
               >
-                Submit Course Inquiry
+                Submit Registration Request
               </button>
             </div>
           </form>
@@ -178,7 +186,7 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
                 Thank you, {fullName}!
               </h4>
               <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-sm mx-auto leading-relaxed">
-                Your course inquiry for <strong>{course.title}</strong> has been received. Our training coordinators will get in touch with you at <strong>{phone}</strong> to confirm upcoming schedules, venue, and enrollment procedures.
+                Your training registration request for <strong>{course.title}</strong> has been received. Our training coordinators will get in touch with you at <strong>{phone}</strong> to confirm course requirements, slot reservation, and payment procedures.
               </p>
             </div>
 
@@ -203,7 +211,7 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
 
               <button
                 onClick={onClose}
-                className="text-xs text-stone-500 hover:text-stone-800 pt-1"
+                className="text-xs text-stone-500 hover:text-stone-800 pt-1 cursor-pointer"
               >
                 Done
               </button>

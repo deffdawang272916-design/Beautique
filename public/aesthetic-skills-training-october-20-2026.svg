@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141916"/>
+      <stop offset="40%" stop-color="#1C2420"/>
+      <stop offset="80%" stop-color="#101412"/>
+      <stop offset="100%" stop-color="#0A0D0C"/>
+    </linearGradient>
+
+    <!-- Metallic Gold Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#CCA04B"/>
+      <stop offset="30%" stop-color="#F9E29D"/>
+      <stop offset="60%" stop-color="#D8AA52"/>
+      <stop offset="100%" stop-color="#B8852B"/>
+    </linearGradient>
+
+    <!-- Card Background -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242E28" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#161E1A" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#CCA04B" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background Poster -->
+  <rect width="800" height="1000" fill="url(#bgGrad)"/>
+
+  <!-- Subtle Decorative Gold Borders -->
+  <rect x="25" y="25" width="750" height="950" rx="16" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.6"/>
+  <rect x="35" y="35" width="730" height="930" rx="12" fill="none" stroke="#D8AA52" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Corner Ornaments -->
+  <g stroke="url(#goldGrad)" stroke-width="2" fill="none" opacity="0.8">
+    <path d="M 45 65 L 45 45 L 65 45"/>
+    <path d="M 755 65 L 755 45 L 735 45"/>
+    <path d="M 45 935 L 45 955 L 65 955"/>
+    <path d="M 755 935 L 755 955 L 735 955"/>
+  </g>
+
+  <!-- Academy Emblem Header -->
+  <g transform="translate(400, 95)">
+    <!-- Circular Crest -->
+    <circle cx="0" cy="0" r="32" fill="#1C2420" stroke="url(#goldGrad)" stroke-width="2"/>
+    <path d="M -15,5 Q 0,-20 15,5 Q 0,-2 -15,5 Z" fill="url(#goldGrad)"/>
+    <circle cx="0" cy="-6" r="5" fill="url(#goldGrad)"/>
+    <text y="50" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="700" font-size="13" fill="#E8D29F" text-anchor="middle" letter-spacing="3">BEAUTIQUE AESTHETIC TRAINING CENTER</text>
+    <text y="68" font-family="'Inter', sans-serif" font-weight="500" font-size="10" fill="#9CA3AF" text-anchor="middle" letter-spacing="2">SANTA ROSA, NUEVA ECIJA</text>
+  </g>
+
+  <!-- Main Banner Title -->
+  <g transform="translate(400, 220)">
+    <text font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="800" font-size="36" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="3" filter="url(#glow)">AESTHETIC SKILLS</text>
+    <text y="42" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-weight="800" font-size="36" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="3" filter="url(#glow)">TRAINING</text>
+    
+    <text y="80" font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="20" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">Level Up Your Aesthetic Skills</text>
+    
+    <!-- Price Pill -->
+    <rect x="-240" y="105" width="480" height="42" rx="21" fill="url(#goldGrad)" filter="url(#glow)"/>
+    <text y="132" font-family="'Inter', sans-serif" font-weight="800" font-size="17" fill="#141916" text-anchor="middle" letter-spacing="1">A Comprehensive Course for ₱4,999</text>
+  </g>
+
+  <!-- Training Topics Container Card -->
+  <rect x="70" y="405" width="660" height="360" rx="14" fill="url(#cardGrad)" stroke="url(#goldGrad)" stroke-width="1.5"/>
+
+  <!-- Card Header Pill -->
+  <g transform="translate(400, 405)">
+    <rect x="-170" y="-16" width="340" height="32" rx="16" fill="#1C2420" stroke="url(#goldGrad)" stroke-width="1.5"/>
+    <text y="5" font-family="'Inter', sans-serif" font-weight="700" font-size="11" fill="#F9E29D" text-anchor="middle" letter-spacing="2">TRAINING TOPICS COVERED</text>
+  </g>
+
+  <!-- Topics 2-Column Grid -->
+  <g transform="translate(100, 455)" font-family="'Inter', sans-serif" font-size="14.5" fill="#FFFFFF">
+    
+    <!-- Column 1 -->
+    <g transform="translate(0, 0)">
+      <!-- Item 1 -->
+      <g transform="translate(0, 0)">
+        <circle cx="12" cy="12" r="10" fill="#CCA04B" opacity="0.2"/>
+        <path d="M 7,12 L 11,16 L 17,9" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="32" y="17" font-weight="600">Acne scar management</text>
+      </g>
+      <!-- Item 2 -->
+      <g transform="translate(0, 58)">
+        <circle cx="12" cy="12" r="10" fill="#CCA04B" opacity="0.2"/>
+        <path d="M 7,12 L 11,16 L 17,9" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="32" y="17" font-weight="600">Melasma removal</text>
+      </g>
+      <!-- Item 3 -->
+      <g transform="translate(0, 116)">
+        <circle cx="12" cy="12" r="10" fill="#CCA04B" opacity="0.2"/>
+        <path d="M 7,12 L 11,16 L 17,9" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="32" y="17" font-weight="600">Exosome training</text>
+      </g>
+      <!-- Item 4 -->
+      <g transform="translate(0, 174)">
+        <circle cx="12" cy="12" r="10" fill="#CCA04B" opacity="0.2"/>
+        <path d="M 7,12 L 11,16 L 17,9" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="32" y="17" font-weight="600">Vampire facial training</text>
+      </g>
+    </g>
+
+    <!-- Column 2 -->
+    <g transform="translate(300, 0)">
+      <!-- Item 5 -->
+      <g transform="translate(0, 0)">
+        <circle cx="12" cy="12" r="10" fill="#CCA04B" opacity="0.2"/>
+        <path d="M 7,12 L 11,16 L 17,9" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="32" y="17" font-weight="600">Skin boosters</text>
+      </g>
+      <!-- Item 6 -->
+      <g transform="translate(0, 58)">
+        <circle cx="12" cy="12" r="10" fill="#CCA04B" opacity="0.2"/>
+        <path d="M 7,12 L 11,16 L 17,9" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="32" y="17" font-weight="600">Collagen induction therapy</text>
+      </g>
+      <!-- Item 7 -->
+      <g transform="translate(0, 116)">
+        <circle cx="12" cy="12" r="10" fill="#CCA04B" opacity="0.2"/>
+        <path d="M 7,12 L 11,16 L 17,9" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="32" y="17" font-weight="600">Hair regrowth treatment</text>
+      </g>
+      <!-- Item 8 -->
+      <g transform="translate(0, 174)">
+        <circle cx="12" cy="12" r="10" fill="#CCA04B" opacity="0.2"/>
+        <path d="M 7,12 L 11,16 L 17,9" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="32" y="17" font-weight="600">Intensive underarm whitening</text>
+      </g>
+    </g>
+
+  </g>
+
+  <!-- Hands-On & Limited Slots Ribbons -->
+  <g transform="translate(400, 725)">
+    <rect x="-260" y="0" width="520" height="28" rx="6" fill="#1C2420" stroke="#CCA04B" stroke-width="1"/>
+    <text y="19" font-family="'Inter', sans-serif" font-weight="700" font-size="11.5" fill="#F9E29D" text-anchor="middle" letter-spacing="2">WITH HANDS-ON PRACTICE · LIMITED SLOT ONLY</text>
+  </g>
+
+  <!-- Footer Event Details (Date, Location, Tuition) -->
+  <g transform="translate(70, 790)">
+    <!-- Date Box -->
+    <rect x="0" y="0" width="205" height="135" rx="10" fill="#18201B" stroke="url(#goldGrad)" stroke-width="1.2"/>
+    <text x="102" y="32" font-family="'Inter', sans-serif" font-weight="600" font-size="10.5" fill="#9CA3AF" text-anchor="middle" letter-spacing="1.5">TRAINING DATE</text>
+    <text x="102" y="65" font-family="'Cinzel', 'Playfair Display', serif" font-weight="700" font-size="17" fill="#FFFFFF" text-anchor="middle">October 20, 2026</text>
+    <text x="102" y="95" font-family="'Inter', sans-serif" font-weight="500" font-size="11" fill="#CCA04B" text-anchor="middle">Upcoming Batch</text>
+
+    <!-- Location Box -->
+    <rect x="225" y="0" width="210" height="135" rx="10" fill="#18201B" stroke="url(#goldGrad)" stroke-width="1.2"/>
+    <text x="330" y="32" font-family="'Inter', sans-serif" font-weight="600" font-size="10.5" fill="#9CA3AF" text-anchor="middle" letter-spacing="1.5">VENUE LOCATION</text>
+    <text x="330" y="65" font-family="'Cinzel', 'Playfair Display', serif" font-weight="700" font-size="16" fill="#FFFFFF" text-anchor="middle">Santa Rosa</text>
+    <text x="330" y="90" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="#D1D5DB" text-anchor="middle">Nueva Ecija</text>
+
+    <!-- Tuition Price Box -->
+    <rect x="455" y="0" width="205" height="135" rx="10" fill="#18201B" stroke="url(#goldGrad)" stroke-width="1.5"/>
+    <text x="557" y="32" font-family="'Inter', sans-serif" font-weight="600" font-size="10.5" fill="#9CA3AF" text-anchor="middle" letter-spacing="1.5">COURSE TUITION</text>
+    <text x="557" y="70" font-family="'Inter', sans-serif" font-weight="900" font-size="28" fill="url(#goldGrad)" text-anchor="middle">₱4,999</text>
+    <text x="557" y="100" font-family="'Inter', sans-serif" font-weight="600" font-size="10.5" fill="#FFFFFF" text-anchor="middle">All-In Training</text>
+  </g>
+
+  <!-- Bottom CTA Notice -->
+  <text x="400" y="958" font-family="'Inter', sans-serif" font-weight="500" font-size="11" fill="#9CA3AF" text-anchor="middle" letter-spacing="1">Reserve Your Slot · Contact Beautique Aesthetic Training Center</text>
+</svg>

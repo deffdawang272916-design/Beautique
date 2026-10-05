@@ -112,8 +112,20 @@ export interface TrainingCourse {
   priceFormatted: string;
   pricingNote?: string;
   image: string;
+  secondaryImage?: string;
+  galleryImages?: string[];
   badge?: string;
   statusNote?: string;
+  pinned?: boolean;
+  featured?: boolean;
+  isLatest?: boolean;
+  priority?: number;
+  date?: string;
+  registrationDeadline?: string;
+  slotsInfo?: string;
+  location?: string;
+  price?: number | null;
+  highlights?: string[];
 }
 
 export interface TrainingAccreditation {
